@@ -1,0 +1,148 @@
+[versions]
+# ===== Build / Tooling =====
+agp = "8.11.1"
+kotlin = "1.9.24"
+
+app-build-compileSDKVersion = "36"
+app-build-targetSDK = "36"
+app-build-minimumSDK = "26"
+app-build-javaVersion = "VERSION_17"
+app-build-kotlinJVMTarget = "17"
+
+# ===== Detekt =====
+detekt = "1.23.8"
+detektCompose = "0.4.28"
+
+# ===== AndroidX Core =====
+androidx-core-ktx = "1.17.0"
+androidx-appcompat = "1.7.1"
+androidx-activity = "1.12.2"
+androidx-constraintlayout = "2.2.1"
+androidx-swiperefreshlayout = "1.2.0"
+androidx-documentfile = "1.1.0"
+androidx-exifinterface = "1.3.7"
+androidx-biometric-ktx = "1.2.0-alpha05"
+
+# ===== Lifecycle =====
+lifecycle-runtime-ktx = "2.6.2"
+lifecycle-viewmodel-ktx = "2.6.2"
+lifecycle-compose = "2.6.2"
+lifecycle-process = "2.6.2"
+
+# ===== Compose =====
+compose-ui = "1.6.0"
+compose-material3 = "1.3.1"
+compose-material-icons = "1.6.0"
+activity-compose = "1.9.3"
+
+# ===== Google / Material =====
+material = "1.13.0"
+
+# ===== Room =====
+room = "2.6.1"
+
+# ===== Serialization =====
+kotlinx-serialization-json = "1.6.0"
+kotlinx-collections-immutable = "0.3.7"
+
+# ===== Testing =====
+junit = "4.13.2"
+androidx-junit = "1.3.0"
+espresso-core = "3.7.0"
+
+# ===== Fossify =====
+commons = "5.12.0"
+
+# ===== Other =====
+autofittextview = "0.2.1"
+gestureviews = "2.8.3"
+rootshell = "bc7e5d398e"
+roottools = "965c154e20"
+zip4j = "2.11.5"
+joda-time = "2.12.4"
+reprint = "3.3.2"
+gson = "2.10.1"
+
+
+[libraries]
+# ===== AndroidX =====
+androidxCoreKtx = { module = "androidx.core:core-ktx", version.ref = "androidx-core-ktx" }
+androidxAppcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidx-appcompat" }
+androidxActivity = { module = "androidx.activity:activity", version.ref = "androidx-activity" }
+androidxConstraintLayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "androidx-constraintlayout" }
+androidxSwipeRefreshLayout = { module = "androidx.swiperefreshlayout:swiperefreshlayout", version.ref = "androidx-swiperefreshlayout" }
+androidxDocumentFile = { module = "androidx.documentfile:documentfile", version.ref = "androidx-documentfile" }
+androidxExifInterface = { module = "androidx.exifinterface:exifinterface", version.ref = "androidx-exifinterface" }
+androidxBiometricKtx = { module = "androidx.biometric:biometric-ktx", version.ref = "androidx-biometric-ktx" }
+
+# ===== Lifecycle =====
+androidxLifecycleRuntimeKtx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycle-runtime-ktx" }
+androidxLifecycleViewModelKtx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle-viewmodel-ktx" }
+androidxLifecycleRuntimeCompose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "lifecycle-compose" }
+androidxLifecycleProcess = { module = "androidx.lifecycle:lifecycle-process", version.ref = "lifecycle-process" }
+
+# ===== Compose =====
+composeUi = { module = "androidx.compose.ui:ui", version.ref = "compose-ui" }
+composeUiToolingPreview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose-ui" }
+composeMaterial3 = { module = "androidx.compose.material3:material3", version.ref = "compose-material3" }
+composeMaterialIconsExtended = { module = "androidx.compose.material:material-icons-extended", version.ref = "compose-material-icons" }
+androidxActivityCompose = { module = "androidx.activity:activity-compose", version.ref = "activity-compose" }
+composeUiViewBinding = { module = "androidx.compose.ui:ui-viewbinding", version.ref = "compose-ui" }
+
+# ===== Google =====
+material = { module = "com.google.android.material:material", version.ref = "material" }
+
+# ===== Room =====
+androidxRoomRuntime = { module = "androidx.room:room-runtime", version.ref = "room" }
+androidxRoomKtx = { module = "androidx.room:room-ktx", version.ref = "room" }
+androidxRoomCompiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+
+# ===== Serialization =====
+kotlinxSerializationJson = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization-json" }
+kotlinxCollectionsImmutable = { module = "org.jetbrains.kotlinx:kotlinx-collections-immutable", version.ref = "kotlinx-collections-immutable" }
+gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
+
+# ===== Testing =====
+junit = { module = "junit:junit", version.ref = "junit" }
+androidxJUnit = { module = "androidx.test.ext:junit", version.ref = "androidx-junit" }
+androidxEspressoCore = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso-core" }
+
+# ===== Detekt =====
+composeDetekt = { module = "io.nlopez.compose.rules:detekt", version.ref = "detektCompose" }
+
+# ===== Fossify =====
+fossifyCommons = { module = "com.dh:commons", version.ref = "commons" }
+
+# ===== Other =====
+autofittextview = { module = "me.grantland:autofittextview", version.ref = "autofittextview" }
+gestureviews = { module = "com.alexvasilkov:gesture-views", version.ref = "gestureviews" }
+rootshell = { module = "com.github.naveensingh:RootShell", version.ref = "rootshell" }
+roottools = { module = "com.github.naveensingh:RootTools", version.ref = "roottools" }
+zip4j = { module = "net.lingala.zip4j:zip4j", version.ref = "zip4j" }
+jodaTime = { module = "joda-time:joda-time", version.ref = "joda-time" }
+reprint = { module = "com.github.ajalt:reprint", version.ref = "reprint" }
+
+
+[bundles]
+lifecycle = [
+    "androidxLifecycleRuntimeKtx",
+    "androidxLifecycleViewModelKtx"
+]
+
+compose = [
+    "composeUi",
+    "composeMaterial3",
+    "androidxActivityCompose"
+]
+
+composePreview = [
+    "composeUiToolingPreview"
+]
+
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
+
