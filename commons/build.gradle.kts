@@ -4,25 +4,24 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
-    id("com.google.devtools.ksp") version "1.9.0-1.0.13"
+    id("com.google.devtools.ksp") version "1.9.24-1.0.20"
     id("org.jetbrains.kotlin.plugin.parcelize")
-    id("io.gitlab.arturbosch.detekt") version "1.23.8"
     id("org.jetbrains.kotlin.plugin.serialization") version "1.9.24"
+    id("io.gitlab.arturbosch.detekt") version "1.23.8"
     `maven-publish`
 }
-
 
 group = "com.dh"
 version = "1.0.0"
 
 android {
     namespace = "com.dh.app.core"
-
     compileSdk = libs.versions.app.build.compileSDKVersion.get().toInt()
 
     defaultConfig {
         minSdk = libs.versions.app.build.minimumSDK.get().toInt()
         vectorDrawables.useSupportLibrary = true
+
         ksp {
             arg("room.schemaLocation", "$projectDir/schemas")
         }
@@ -39,44 +38,24 @@ android {
         }
     }
 
-    publishing {
-        singleVariant("release") {}
-    }
-
     buildFeatures {
         viewBinding = true
         compose = true
     }
 
-    compileOptions {
-        val currentJavaVersionFromLibs =
-            JavaVersion.valueOf(libs.versions.app.build.javaVersion.get())
-        sourceCompatibility = currentJavaVersionFromLibs
-        targetCompatibility = currentJavaVersionFromLibs
-    }
-
-    // Compose compiler version aligned with Kotlin 1.9.24
-    buildFeatures {
-        compose = true
-    }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.14"
     }
 
-    tasks.withType<KotlinCompile> {
-        compilerOptions.jvmTarget.set(
-            JvmTarget.fromTarget(project.libs.versions.app.build.kotlinJVMTarget.get())
-        )
-        compilerOptions.freeCompilerArgs.set(
-            listOf(
-                "-opt-in=kotlin.RequiresOptIn",
-                "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api",
-                "-opt-in=androidx.compose.material.ExperimentalMaterialApi",
-                "-opt-in=androidx.compose.foundation.ExperimentalFoundationApi",
-                "-opt-in=com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi",
-                "-Xcontext-receivers"
-            )
-        )
+    compileOptions {
+        val javaVersion =
+            JavaVersion.valueOf(libs.versions.app.build.javaVersion.get())
+        sourceCompatibility = javaVersion
+        targetCompatibility = javaVersion
+    }
+
+    publishing {
+        singleVariant("release")
     }
 
     lint {
@@ -92,14 +71,45 @@ android {
     }
 }
 
-publishing.publications {
-    create<MavenPublication>("release") {
-        afterEvaluate {
-            from(components["release"])
+/**
+ * Kotlin compiler configuration
+ */
+tasks.withType<KotlinCompile>().configureEach {
+    compilerOptions {
+        jvmTarget.set(
+            JvmTarget.fromTarget(
+                libs.versions.app.build.kotlinJVMTarget.get()
+            )
+        )
+        freeCompilerArgs.addAll(
+            listOf(
+                "-opt-in=kotlin.RequiresOptIn",
+                "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api",
+                "-opt-in=androidx.compose.material.ExperimentalMaterialApi",
+                "-opt-in=androidx.compose.foundation.ExperimentalFoundationApi",
+                "-opt-in=com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi",
+                "-Xcontext-receivers"
+            )
+        )
+    }
+}
+
+/**
+ * Publishing configuration
+ */
+publishing {
+    publications {
+        create<MavenPublication>("release") {
+            afterEvaluate {
+                from(components["release"])
+            }
         }
     }
 }
 
+/**
+ * Detekt configuration
+ */
 detekt {
     baseline = file("detekt-baseline.xml")
     config.setFrom("$rootDir/detekt.yml")
@@ -132,7 +142,7 @@ dependencies {
     // Lifecycle
     implementation(libs.bundles.lifecycle)
 
-    // API
+    // API (exposed to app)
     api(libs.jodaTime)
     api(libs.reprint)
     api(libs.androidxCoreKtx)

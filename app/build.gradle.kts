@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "com.dh.app.core"
+    namespace = "com.dh.app"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.dh.app.core"
+        applicationId = "com.dh.app"
         minSdk = 26
         targetSdk = 36
         versionCode = 1
