@@ -1,0 +1,36 @@
+package com.dh.commons.views
+
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import kotlin.math.max
+
+open class AutoStaggeredGridLayoutManager(
+    private var itemSize: Int,
+    orientation: Int,
+) : StaggeredGridLayoutManager(1, orientation) {
+
+    init {
+        require(itemSize >= 0) {
+            "itemSize must be >= 0"
+        }
+    }
+
+    override fun onLayoutChildren(recycler: RecyclerView.Recycler?, state: RecyclerView.State?) {
+        val width = width
+        val height = height
+        if (itemSize > 0 && width > 0 && height > 0) {
+            val totalSpace = if (orientation == VERTICAL) {
+                width - paddingRight - paddingLeft
+            } else {
+                height - paddingTop - paddingBottom
+            }
+            postOnAnimation {
+                spanCount = max(1, totalSpace / itemSize)
+            }
+        }
+        super.onLayoutChildren(recycler, state)
+    }
+
+
+    override fun supportsPredictiveItemAnimations() = false
+}

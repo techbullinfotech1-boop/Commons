@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:padding="@dimen/activity_margin">
 
-    <com.dh.app.core.views.MyTextView
+    <com.dh.commons.views.MyTextView
         android:id="@+id/write_permissions_dialog_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <com.dh.app.core.views.MyTextView
+    <com.dh.commons.views.MyTextView
         android:id="@+id/write_permissions_dialog_text_sd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

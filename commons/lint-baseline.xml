@@ -19021,7 +19021,7 @@
     <issue
         id="RelativeOverlap"
         message="`@id/customization_text_color_label` can overlap `@id/customization_text_color` if @string/text_color grows due to localized text expansion"
-        errorLine1="                &lt;com.dh.app.core.views.MyTextView"
+        errorLine1="                &lt;com.dh.commons.views.MyTextView"
         errorLine2="                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/res/layout/activity_customization.xml"
@@ -19032,7 +19032,7 @@
     <issue
         id="RelativeOverlap"
         message="`@id/customization_background_color_label` can overlap `@id/customization_background_color` if @string/background_color grows due to localized text expansion"
-        errorLine1="                &lt;com.dh.app.core.views.MyTextView"
+        errorLine1="                &lt;com.dh.commons.views.MyTextView"
         errorLine2="                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/res/layout/activity_customization.xml"
@@ -19043,7 +19043,7 @@
     <issue
         id="RelativeOverlap"
         message="`@id/customization_primary_color_label` can overlap `@id/customization_primary_color` if @string/primary_color grows due to localized text expansion"
-        errorLine1="                &lt;com.dh.app.core.views.MyTextView"
+        errorLine1="                &lt;com.dh.commons.views.MyTextView"
         errorLine2="                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/res/layout/activity_customization.xml"
@@ -19054,7 +19054,7 @@
     <issue
         id="RelativeOverlap"
         message="`@id/customization_accent_color_label` can overlap `@id/customization_accent_color` if @string/accent_color_white grows due to localized text expansion"
-        errorLine1="                &lt;com.dh.app.core.views.MyTextView"
+        errorLine1="                &lt;com.dh.commons.views.MyTextView"
         errorLine2="                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/res/layout/activity_customization.xml"
@@ -19065,7 +19065,7 @@
     <issue
         id="RelativeOverlap"
         message="`@id/customization_app_icon_color_label` can overlap `@id/customization_app_icon_color` if @string/app_icon_color grows due to localized text expansion"
-        errorLine1="                &lt;com.dh.app.core.views.MyTextView"
+        errorLine1="                &lt;com.dh.commons.views.MyTextView"
         errorLine2="                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/res/layout/activity_customization.xml"
@@ -19076,7 +19076,7 @@
     <issue
         id="RelativeOverlap"
         message="`@id/color_picker_new_hex` can overlap `@id/color_picker_old_hex` if @id/color_picker_new_hex grows due to localized text expansion"
-        errorLine1="            &lt;com.dh.app.core.views.MyEditText"
+        errorLine1="            &lt;com.dh.commons.views.MyEditText"
         errorLine2="             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/res/layout/dialog_color_picker.xml"

@@ -8,7 +8,7 @@
     android:paddingTop="@dimen/activity_margin"
     android:paddingRight="@dimen/activity_margin">
 
-    <com.dh.app.core.views.MyTextInputLayout
+    <com.dh.commons.views.MyTextInputLayout
         android:id="@+id/folder_path_hint"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,9 +21,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-    </com.dh.app.core.views.MyTextInputLayout>
+    </com.dh.commons.views.MyTextInputLayout>
 
-    <com.dh.app.core.views.MyTextInputLayout
+    <com.dh.commons.views.MyTextInputLayout
         android:id="@+id/folder_name_hint"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,5 +38,5 @@
             android:textCursorDrawable="@null"
             android:textSize="@dimen/bigger_text_size" />
 
-    </com.dh.app.core.views.MyTextInputLayout>
+    </com.dh.commons.views.MyTextInputLayout>
 </LinearLayout>

@@ -32,25 +32,25 @@
 
     <application android:supportsRtl="true">
         <activity
-            android:name="com.dh.app.core.activities.ContributorsActivity"
+            android:name="com.dh.commons.activities.ContributorsActivity"
             android:configChanges="orientation"
             android:exported="false"
             android:label="@string/contributors"
-            android:parentActivityName="com.dh.app.core.activities.AboutActivity" />
+            android:parentActivityName="com.dh.commons.activities.AboutActivity" />
 
         <activity
-            android:name="com.dh.app.core.activities.FAQActivity"
+            android:name="com.dh.commons.activities.FAQActivity"
             android:configChanges="orientation"
             android:exported="false"
             android:label="@string/frequently_asked_questions"
-            android:parentActivityName="com.dh.app.core.activities.AboutActivity" />
+            android:parentActivityName="com.dh.commons.activities.AboutActivity" />
 
         <activity
-            android:name="com.dh.app.core.activities.LicenseActivity"
+            android:name="com.dh.commons.activities.LicenseActivity"
             android:configChanges="orientation"
             android:exported="false"
             android:label="@string/third_party_licences"
-            android:parentActivityName="com.dh.app.core.activities.AboutActivity" />
+            android:parentActivityName="com.dh.commons.activities.AboutActivity" />
 
         <activity
             android:name=".activities.ManageBlockedNumbersActivity"

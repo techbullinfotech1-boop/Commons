@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.dh.app.core.views.PatternTab xmlns:android="http://schemas.android.com/apk/res/android"
+<com.dh.commons.views.PatternTab xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/pattern_lock_holder"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.dh.app.core.views.MyTextView
+    <com.dh.commons.views.MyTextView
         android:id="@+id/pattern_lock_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -25,7 +25,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.dh.app.core.patternlockview.PatternLockView
+    <com.dh.commons.patternlockview.PatternLockView
         android:id="@+id/pattern_lock_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -38,4 +38,4 @@
         app:layout_constraintTop_toBottomOf="@+id/pattern_lock_title"
         app:layout_constraintWidth_max="@dimen/app_lock_view_max_size" />
 
-</com.dh.app.core.views.PatternTab>
+</com.dh.commons.views.PatternTab>

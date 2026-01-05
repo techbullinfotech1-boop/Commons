@@ -15,7 +15,7 @@ group = "com.dh"
 version = "1.0.0"
 
 android {
-    namespace = "com.dh.app.core"
+    namespace = "com.dh.commons"
     compileSdk = libs.versions.app.build.compileSDKVersion.get().toInt()
 
     defaultConfig {
