@@ -21,10 +21,6 @@ android {
     defaultConfig {
         minSdk = libs.versions.app.build.minimumSDK.get().toInt()
         vectorDrawables.useSupportLibrary = true
-
-        ksp {
-            arg("room.schemaLocation", "$projectDir/schemas")
-        }
     }
 
     buildTypes {
@@ -39,12 +35,12 @@ android {
     }
 
     buildFeatures {
-        viewBinding = true
         compose = true
+        viewBinding = true
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.14"
+        kotlinCompilerExtensionVersion = "1.5.15"
     }
 
     compileOptions {
@@ -52,10 +48,6 @@ android {
             JavaVersion.valueOf(libs.versions.app.build.javaVersion.get())
         sourceCompatibility = javaVersion
         targetCompatibility = javaVersion
-    }
-
-    publishing {
-        singleVariant("release")
     }
 
     lint {
@@ -72,15 +64,18 @@ android {
 }
 
 /**
+ * ✅ Top-level KSP configuration (not inside defaultConfig)
+ */
+ksp {
+    arg("room.schemaLocation", "$projectDir/schemas")
+}
+
+/**
  * Kotlin compiler configuration
  */
 tasks.withType<KotlinCompile>().configureEach {
     compilerOptions {
-        jvmTarget.set(
-            JvmTarget.fromTarget(
-                libs.versions.app.build.kotlinJVMTarget.get()
-            )
-        )
+        jvmTarget.set(JvmTarget.fromTarget(libs.versions.app.build.kotlinJVMTarget.get()))
         freeCompilerArgs.addAll(
             listOf(
                 "-opt-in=kotlin.RequiresOptIn",
@@ -95,7 +90,7 @@ tasks.withType<KotlinCompile>().configureEach {
 }
 
 /**
- * Publishing configuration
+ * Maven publishing configuration
  */
 publishing {
     publications {
@@ -134,15 +129,19 @@ dependencies {
     implementation(libs.androidxActivityCompose)
 
     // Compose
-    implementation(libs.bundles.compose)
+    implementation(libs.bundles.composePreview)
     debugImplementation(libs.bundles.composePreview)
     implementation(libs.composeUiViewBinding)
     implementation(libs.composeMaterialIconsExtended)
+    implementation(libs.composeMaterial3)
+    implementation("androidx.compose.foundation:foundation")
+    implementation("androidx.compose.ui:ui-tooling-preview")
+    implementation("androidx.compose.ui:ui-tooling")
 
     // Lifecycle
     implementation(libs.bundles.lifecycle)
 
-    // API (exposed to app)
+    // API (exposed)
     api(libs.jodaTime)
     api(libs.reprint)
     api(libs.androidxCoreKtx)
