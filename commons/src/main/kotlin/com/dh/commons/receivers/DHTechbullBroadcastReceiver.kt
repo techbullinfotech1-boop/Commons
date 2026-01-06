@@ -6,7 +6,7 @@ import android.content.Intent
 import com.dh.commons.extensions.syncGlobalConfig
 import com.dh.commons.helpers.MyContentProvider
 
-class FossifyBroadcastReceiver : BroadcastReceiver() {
+class DHTechbullBroadcastReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
         if (intent?.action == MyContentProvider.ACTION_GLOBAL_CONFIG_UPDATED) {
             context?.syncGlobalConfig()

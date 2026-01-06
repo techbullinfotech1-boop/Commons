@@ -16,8 +16,6 @@ import com.dh.commons.compose.screens.HelpUsSection
 import com.dh.commons.compose.screens.OtherSection
 import com.dh.commons.compose.theme.AppThemeSurface
 import com.dh.commons.extensions.baseConfig
-import com.dh.commons.extensions.getStoreUrl
-import com.dh.commons.extensions.launchAppRatingPage
 import com.dh.commons.extensions.launchMoreAppsFromUsIntent
 import com.dh.commons.extensions.launchViewIntent
 import com.dh.commons.extensions.toast
@@ -121,11 +119,12 @@ class AboutActivity : BaseComposeActivity() {
     }
 
     private fun onRateThisAppClick() {
-        launchAppRatingPage()
+//        launchAppRatingPage()
+        //Add Rating Dialog
     }
 
     private fun onInviteClick() {
-        val storeUrl = getStoreUrl()
+        val storeUrl = "www.google.com"
         val text = String.format(getString(R.string.share_text), appName, storeUrl)
 
         Intent(Intent.ACTION_SEND).apply {
@@ -138,11 +137,7 @@ class AboutActivity : BaseComposeActivity() {
 
     //Add privacy Policy Link
     private fun onPrivacyPolicyClick() {
-        val appId = baseConfig.appId
-            .removeSuffix(".debug")
-            .removeSuffix(".pro")
-            .removePrefix("com.dh.")
-        launchViewIntent("https://www.fossify.org/policy/$appId")
+        launchViewIntent("https://www.fossify.org/policy/")
     }
 
     private fun onVersionClick() {

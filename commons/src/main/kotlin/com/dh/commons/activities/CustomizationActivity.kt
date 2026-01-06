@@ -86,7 +86,7 @@ class CustomizationActivity : BaseSimpleActivity() {
                 baseConfig.isGlobalThemeEnabled = it.isGlobalThemingEnabled()
                 runOnUiThread {
                     setupThemes()
-                    showOrHideThankYouFeatures()
+//                    showOrHideThankYouFeatures()
                 }
             }
         } else {
@@ -94,7 +94,7 @@ class CustomizationActivity : BaseSimpleActivity() {
             baseConfig.isGlobalThemeEnabled = false
         }
 
-        showOrHideThankYouFeatures()
+//        showOrHideThankYouFeatures()
         originalAppIconColor = baseConfig.appIconColor
         updateLabelColors()
         updateHeaderColors()
@@ -117,7 +117,7 @@ class CustomizationActivity : BaseSimpleActivity() {
             navigationIcon = NavigationIcon.Arrow,
             topBarColor = getColoredMaterialStatusBarColor()
         )
-        showOrHideThankYouFeatures()
+//        showOrHideThankYouFeatures()
     }
 
     private fun refreshMenuItems() {
@@ -432,7 +432,7 @@ class CustomizationActivity : BaseSimpleActivity() {
         FontHelper.clearCache()
         baseConfig.isSystemThemeEnabled = curSelectedThemeId == THEME_SYSTEM
 
-        if (isThankYouInstalled()) saveThankYouChanges()
+         saveThankYouChanges()
         hasUnsavedChanges = false
         if (finishAfterSave) finish() else refreshMenuItems()
     }
@@ -444,7 +444,6 @@ class CustomizationActivity : BaseSimpleActivity() {
             else -> GLOBAL_THEME_CUSTOM
         }
 
-        val canFontsBeSynced = isThankYouFontsSupported()
         updateGlobalConfig(
             ContentValues().apply {
                 put(COL_THEME_TYPE, globalThemeType)
@@ -453,14 +452,12 @@ class CustomizationActivity : BaseSimpleActivity() {
                 put(COL_PRIMARY_COLOR, curPrimaryColor)
                 put(COL_ACCENT_COLOR, curAccentColor)
                 put(COL_APP_ICON_COLOR, curAppIconColor)
-                if (canFontsBeSynced) {
                     put(COL_FONT_TYPE, curFontType)
                     put(COL_FONT_NAME, curFontFileName)
-                }
             }
         )
 
-        if (curFontType == FONT_TYPE_CUSTOM && curFontFileName.isNotEmpty() && canFontsBeSynced) {
+        if (curFontType == FONT_TYPE_CUSTOM && curFontFileName.isNotEmpty()) {
             val fontData = FontHelper.getFontData(this, curFontFileName) ?: return
             val fontUri = FONTS_URI.buildUpon()
                 .appendPath(curFontFileName)
@@ -553,10 +550,6 @@ class CustomizationActivity : BaseSimpleActivity() {
     }
 
     private fun fontPickerClicked() {
-        if (!resources.getBoolean(R.bool.hide_google_relations) && !isOrWasThankYouInstalled()) {
-            PurchaseThankYouDialog(this)
-            return
-        }
 
         val items = arrayListOf(
             RadioItem(FONT_TYPE_SYSTEM_DEFAULT, getString(R.string.system_default)),
@@ -820,9 +813,9 @@ class CustomizationActivity : BaseSimpleActivity() {
 
     private fun getMaterialYouString() = getString(R.string.system_default)
 
-    private fun showOrHideThankYouFeatures() {
-        val showThankYouFeatures = canAccessGlobalConfig()
-            || !resources.getBoolean(R.bool.hide_google_relations)
-        binding.applyToAllDivider.root.beVisibleIf(showThankYouFeatures)
-    }
+//    private fun showOrHideThankYouFeatures() {
+//        val showThankYouFeatures = canAccessGlobalConfig()
+//            || !resources.getBoolean(R.bool.hide_google_relations)
+//        binding.applyToAllDivider.root.beVisibleIf(showThankYouFeatures)
+//    }
 }

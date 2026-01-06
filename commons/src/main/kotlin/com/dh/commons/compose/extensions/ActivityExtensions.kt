@@ -13,13 +13,8 @@ import com.dh.commons.R
 import com.dh.commons.extensions.baseConfig
 import com.dh.commons.extensions.checkAppIconColor
 import com.dh.commons.extensions.getAppIconColors
-import com.dh.commons.extensions.getCanAppBeUpgraded
 import com.dh.commons.extensions.getInternalStoragePath
-import com.dh.commons.extensions.isAProApp
 import com.dh.commons.extensions.isAppInstalledOnSDCard
-import com.dh.commons.extensions.isOrWasThankYouInstalled
-import com.dh.commons.extensions.launchViewIntent
-import com.dh.commons.extensions.random
 import com.dh.commons.extensions.toggleAppIconColor
 import com.dh.commons.extensions.updateSDCardPath
 import com.dh.commons.helpers.isOreoMr1Plus
@@ -84,14 +79,6 @@ fun ComponentActivity.checkWhatsNewCompose(releases: List<Release>, currVersion:
 
 //Addd More App Link
 const val DEVELOPER_PLAY_STORE_URL = "https://play.google.com/store/apps/dev?id=7297838378654322558"
-const val FAKE_VERSION_APP_LABEL =
-    "You are using a fake version of the app. For your own safety download the original one from www.fossify.org. Thanks"
-
-fun Context.fakeVersionCheck(
-    showConfirmationDialog: () -> Unit
-) {
-
-}
 
 fun ComponentActivity.appOnSdCardCheckCompose(
     showConfirmationDialog: () -> Unit

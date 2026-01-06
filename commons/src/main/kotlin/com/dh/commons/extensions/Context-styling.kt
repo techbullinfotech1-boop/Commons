@@ -185,14 +185,12 @@ fun Context.syncGlobalConfig(callback: (() -> Unit)? = null) {
 }
 
 fun Context.withGlobalConfig(callback: (globalConfig: GlobalConfig?) -> Unit) {
-    if (!isThankYouInstalled()) {
-        callback(null)
-    } else {
+
         val cursorLoader = getMyContentProviderCursorLoader()
         ensureBackgroundThread {
             callback(getGlobalConfig(cursorLoader))
         }
-    }
+
 }
 
 fun Context.getGlobalConfig(cursorLoader: CursorLoader): GlobalConfig? {

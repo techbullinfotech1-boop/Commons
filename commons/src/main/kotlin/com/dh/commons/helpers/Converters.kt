@@ -65,7 +65,6 @@ class Converters {
     @TypeConverter
     fun jsonToAddressList(value: String): ArrayList<Address> {
         val addresses = gson.fromJson<ArrayList<Address>>(value, addressType)
-        // This is a workaround for https://github.com/FossifyOrg/Contacts/issues/281
         return addresses.map {
             @Suppress("USELESS_ELVIS")
             it.copy(

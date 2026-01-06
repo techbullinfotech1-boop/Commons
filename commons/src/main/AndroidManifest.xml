@@ -45,12 +45,7 @@
             android:label="@string/frequently_asked_questions"
             android:parentActivityName="com.dh.commons.activities.AboutActivity" />
 
-        <activity
-            android:name="com.dh.commons.activities.LicenseActivity"
-            android:configChanges="orientation"
-            android:exported="false"
-            android:label="@string/third_party_licences"
-            android:parentActivityName="com.dh.commons.activities.AboutActivity" />
+
 
         <activity
             android:name=".activities.ManageBlockedNumbersActivity"
@@ -59,17 +54,14 @@
             android:exported="false"
             android:label="@string/manage_blocked_numbers" />
 
-        <activity
-            android:name=".activities.DonationActivity"
-            android:exported="false"
-            android:label="@string/donate_to_fossify" />
+
 
         <activity
             android:name=".activities.AppLockActivity"
             android:exported="false" />
 
         <receiver
-            android:name=".receivers.FossifyBroadcastReceiver"
+            android:name=".receivers.DHTechbullBroadcastReceiver"
             android:exported="true"
             tools:ignore="ExportedReceiver">
             <intent-filter>

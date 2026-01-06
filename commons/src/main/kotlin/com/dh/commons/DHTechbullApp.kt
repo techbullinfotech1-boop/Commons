@@ -5,7 +5,7 @@ import androidx.lifecycle.ProcessLifecycleOwner
 import com.dh.commons.extensions.appLockManager
 import com.dh.commons.extensions.checkUseEnglish
 
-open class FossifyApp : Application() {
+open class DHTechbullApp : Application() {
 
     open val isAppLockFeatureAvailable = false
 

@@ -133,7 +133,6 @@ import java.util.Date
 import java.util.Locale
 import androidx.core.net.toUri
 import com.dh.commons.helpers.FontHelper
-import com.dh.commons.helpers.FossifyThankYou
 import com.dh.commons.helpers.isPiePlus
 import kotlin.math.roundToInt
 
@@ -252,7 +251,6 @@ fun Context.getLatestMediaByDateId(uri: Uri = Files.getContentUri("external")): 
     return 0
 }
 
-// some helper functions were taken from https://github.com/iPaulPro/aFileChooser/blob/master/aFileChooser/src/com/ipaulpro/afilechooser/utils/FileUtils.java
 fun Context.getRealPathFromURI(uri: Uri): String? {
     if (uri.scheme == "file") {
         return uri.path
@@ -572,48 +570,22 @@ fun Context.getUriMimeType(path: String, newUri: Uri): String {
     return mimeType
 }
 
-fun Context.isThankYouInstalled() = isPackageInstalled(FossifyThankYou.PACKAGE_NAME)
-
-fun Context.isThankYouFontsSupported(): Boolean {
-    return try {
-        val thankYouAppInfo = packageManager.getPackageInfo(FossifyThankYou.PACKAGE_NAME, 0)
-        if (isPiePlus()) {
-            thankYouAppInfo.longVersionCode >= FossifyThankYou.MIN_VERSION_CODE_FOR_FONTS
-        } else {
-            @Suppress("DEPRECATION")
-            thankYouAppInfo.versionCode >= FossifyThankYou.MIN_VERSION_CODE_FOR_FONTS
-        }
-    } catch (_: Exception) {
-        false
-    }
-}
+//fun Context.isThankYouFontsSupported(): Boolean {
+//    return try {
+//        val thankYouAppInfo = packageManager.getPackageInfo(FossifyThankYou.PACKAGE_NAME, 0)
+//        if (isPiePlus()) {
+//            thankYouAppInfo.longVersionCode >= FossifyThankYou.MIN_VERSION_CODE_FOR_FONTS
+//        } else {
+//            @Suppress("DEPRECATION")
+//            thankYouAppInfo.versionCode >= FossifyThankYou.MIN_VERSION_CODE_FOR_FONTS
+//        }
+//    } catch (_: Exception) {
+//        false
+//    }
+//}
 
 fun Context.canAccessGlobalConfig(): Boolean {
-    return isThankYouInstalled() && ContextCompat.checkSelfPermission(this, PERMISSION_WRITE_GLOBAL_SETTINGS) == PERMISSION_GRANTED
-}
-
-fun Context.isOrWasThankYouInstalled(allowPretend: Boolean = true): Boolean {
-    return when {
-        isThankYouInstalled() -> {
-            if (!baseConfig.hadThankYouInstalled) {
-                baseConfig.hadThankYouInstalled = true
-            }
-            true
-        }
-        baseConfig.hadThankYouInstalled -> true
-        resources.getBoolean(R.bool.pretend_thank_you_installed) && allowPretend -> true
-        else -> false
-    }
-}
-
-fun Context.isAProApp() = packageName.startsWith("com.dh.") && packageName.removeSuffix(".debug").endsWith(".pro")
-
-fun Context.addLockedLabelIfNeeded(stringId: Int): String {
-    return if (isOrWasThankYouInstalled()) {
-        getString(stringId)
-    } else {
-        "${getString(stringId)} (${getString(R.string.feature_locked)})"
-    }
+    return ContextCompat.checkSelfPermission(this, PERMISSION_WRITE_GLOBAL_SETTINGS) == PERMISSION_GRANTED
 }
 
 fun Context.isPackageInstalled(pkgName: String): Boolean {
@@ -837,12 +809,6 @@ fun Context.saveExifRotation(exif: ExifInterface, degrees: Int) {
 }
 
 fun Context.getLaunchIntent() = packageManager.getLaunchIntentForPackage(baseConfig.appId)
-
-fun Context.getCanAppBeUpgraded() = proPackages.contains(baseConfig.appId.removeSuffix(".debug").removePrefix("com.dh."))
-
-fun Context.getProUrl() = "https://play.google.com/store/apps/details?id=${baseConfig.appId.removeSuffix(".debug")}.pro"
-
-fun Context.getStoreUrl() = "https://play.google.com/store/apps/details?id=${packageName.removeSuffix(".debug")}"
 
 fun Context.getTimeFormat() = if (baseConfig.use24HourFormat) TIME_FORMAT_24 else TIME_FORMAT_12
 
