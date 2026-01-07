@@ -1196,4 +1196,48 @@ abstract class BaseSimpleActivity : EdgeToEdgeActivity() {
             startActivityForResult(intent, REQUEST_CODE_SET_DEFAULT_CALLER_ID)
         }
     }
+
+    fun startCustomizationActivity() {
+
+        Intent(applicationContext, CustomizationActivity::class.java).apply {
+            putExtra(APP_ICON_IDS, getAppIconIDs())
+            putExtra(APP_LAUNCHER_NAME, getAppLauncherName())
+            startActivity(this)
+        }
+    }
+
+    fun startAboutActivity(
+        appNameId: Int,
+        licenseMask: Long,
+        versionName: String,
+        faqItems: ArrayList<FAQItem>,
+        showFAQBeforeMail: Boolean
+    ) {
+        hideKeyboard()
+        Intent(applicationContext, AboutActivity::class.java).apply {
+            putExtra(APP_ICON_IDS, getAppIconIDs())
+            putExtra(APP_LAUNCHER_NAME, getAppLauncherName())
+            putExtra(APP_NAME, getString(appNameId))
+            putExtra(APP_REPOSITORY_NAME, getRepositoryName())
+            putExtra(APP_LICENSES, licenseMask)
+            putExtra(APP_VERSION_NAME, versionName)
+            putExtra(APP_PACKAGE_NAME, baseConfig.appId)
+            putExtra(APP_FAQ, faqItems)
+            putExtra(SHOW_FAQ_BEFORE_MAIL, showFAQBeforeMail)
+            startActivity(this)
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
+    fun launchChangeAppLanguageIntent() {
+        try {
+            Intent(Settings.ACTION_APP_LOCALE_SETTINGS).apply {
+                data = Uri.fromParts("package", packageName, null)
+                startActivity(this)
+            }
+        } catch (e: Exception) {
+            openDeviceSettings()
+        }
+    }
+
 }
